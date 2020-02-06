@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private double poidsValue = 0;
     private double tailleValue = 0;
     private double ageValue = 0;
+    private int checkedValue = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
            @Override
            public void onClick(View v) {
                getValues();
-               calucleMG();
-              Toast.makeText(MainActivity.this, "Calcule", Toast.LENGTH_SHORT).show();
+
+              Toast.makeText(MainActivity.this, String.valueOf(calucleMG()), Toast.LENGTH_SHORT).show();
            }
        });
 
@@ -68,9 +69,15 @@ public class MainActivity extends AppCompatActivity {
         poidsValue = Double.valueOf(poids.getText().toString());
         tailleValue = Double.valueOf(taille.getText().toString());
         ageValue = Double.valueOf(age.getText().toString());
+        if (femme.isChecked()) {
+            checkedValue = 0;
+        }
+        else {
+            checkedValue = 1;
+        }
     }
 
-    private void calucleMG() {
-        double mg = (1.2 * poidsValue / (tailleValue * tailleValue)) + (0.23 * ageValue) - (10.83 * 0) - 5.4;
+    private double calucleMG() {
+        return (1.2 * poidsValue / (tailleValue * tailleValue)) + (0.23 * ageValue) - (10.83 * checkedValue) - 5.4;
     }
 }
