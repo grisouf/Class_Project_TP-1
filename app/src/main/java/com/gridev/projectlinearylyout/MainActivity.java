@@ -2,7 +2,6 @@ package com.gridev.projectlinearylyout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -44,14 +43,17 @@ public class MainActivity extends AppCompatActivity {
            @Override
            public void onClick(View v) {
                getValues();
-
-              Toast.makeText(MainActivity.this, String.valueOf(calucleMG()), Toast.LENGTH_SHORT).show();
+               calculateMG();
+              Toast.makeText(MainActivity.this, String.valueOf(calculateMG()), Toast.LENGTH_SHORT).show();
            }
        });
 
 
     }
 
+    /**
+     *  Method for Initialize Views
+     */
     private void init () {
         poids = findViewById(R.id.poids);
         taille = findViewById(R.id.taille);
@@ -65,6 +67,9 @@ public class MainActivity extends AppCompatActivity {
         image = findViewById(R.id.image);
     }
 
+    /**
+     *  Method for getting Input values
+     */
     private void getValues() {
         poidsValue = Double.valueOf(poids.getText().toString());
         tailleValue = Double.valueOf(taille.getText().toString());
@@ -77,7 +82,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private double calucleMG() {
+    /**
+     * calculate @MG
+     * @return @MG
+     */
+    private double calculateMG() {
         return (1.2 * poidsValue / (tailleValue * tailleValue)) + (0.23 * ageValue) - (10.83 * checkedValue) - 5.4;
     }
 }
