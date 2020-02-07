@@ -3,6 +3,7 @@ package com.gridev.projectlinearylyout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+    private final String TAG = "MainActivity";
+
     // Views
     private EditText poids;
     private EditText taille;
@@ -30,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
     private double ageValue = 0;
     private int checkedValue = 0;
 
+    private int max;
+    private int min;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,18 +44,17 @@ public class MainActivity extends AppCompatActivity {
 
        init();
 
-
-
        calcule.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
                getValues();
-               calculateMG();
-              Toast.makeText(MainActivity.this, String.valueOf(calculateMG()), Toast.LENGTH_SHORT).show();
+               double value = calculateMG();
+               getResult(value);
+               
+                // Toast.makeText(MainActivity.this, "Message", Toast.LENGTH_SHORT).show();
+               // Log.i(TAG, "onClick: message");
            }
        });
-
-
     }
 
     /**
@@ -75,9 +81,13 @@ public class MainActivity extends AppCompatActivity {
         tailleValue = Double.valueOf(taille.getText().toString());
         ageValue = Double.valueOf(age.getText().toString());
         if (femme.isChecked()) {
+            min = 15;
+            max = 30;
             checkedValue = 0;
         }
         else {
+            min = 10;
+            max = 15;
             checkedValue = 1;
         }
     }
@@ -87,6 +97,22 @@ public class MainActivity extends AppCompatActivity {
      * @return @MG
      */
     private double calculateMG() {
-        return (1.2 * poidsValue / (tailleValue * tailleValue)) + (0.23 * ageValue) - (10.83 * checkedValue) - 5.4;
+        return (1.2 * poidsValue / (tailleValue * tailleValue)) +
+                (0.23 * ageValue) - (10.83 * checkedValue) - 5.4;
+    }
+
+    private void getResult(double mg) {
+        if(mg < min) {
+            result.setText("tres faible");
+            image.setImageResource(R.drawable.triste);
+        }
+        else if (mg > max) {
+            result.setText("trop eleve");
+            image.setImageResource(R.drawable.gras);
+        }
+        else {
+            result.setText("Normal");
+            image.setImageResource(R.drawable.bin);
+        }
     }
 }
