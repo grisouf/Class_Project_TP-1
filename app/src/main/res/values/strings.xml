@@ -9,4 +9,6 @@
     <string name="calcule">Calcule</string>
     <string name="age">Age</string>
     <string name="taille">Taille</string>
+    <string name="calculate_mg">Calculate MG</string>
+    <string name="history">History</string>
 </resources>
