@@ -38,7 +38,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.histroy_mg :
                 intent = new Intent(HomeActivity.this, HistoryActivity.class);
 
-                intent.putExtra(sentText, "Grini Soufyane");
+                //intent.putExtra(sentText, "Grini Soufyane");
 
                 startActivity(intent);
                 break;

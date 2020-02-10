@@ -14,10 +14,12 @@ public class HistoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
-        String getText = getIntent().getExtras().get(sentText).toString();
 
-        TextView text = findViewById(R.id.textviewhistory);
-        text.setTextSize(22);
-        text.setText("Welcome " + getText);
+        /** How to get Value from Other activity */
+
+        //String getText = getIntent().getStringExtra(sentText).toString();
+        //TextView text = findViewById(R.id.textviewhistory);
+        //text.setTextSize(22);
+        //text.setText("Welcome " + getText);
     }
 }
