@@ -21,7 +21,7 @@ import java.util.List;
 public class ProfileHistoryAdapter extends RecyclerView.Adapter<ProfileHistoryAdapter.ProfileHistoryViewHolder> {
 
     // Properties
-    // Ajouter import java.util.List;
+    // Ajouter import java.util.List; pour travailler avc l interface List
     private List<Profile> profileList = new ArrayList<>();
 
     @NonNull
@@ -40,19 +40,22 @@ public class ProfileHistoryAdapter extends RecyclerView.Adapter<ProfileHistoryAd
 
     @Override
     public int getItemCount() {
+     //profileList declare
         return profileList.size();
     }
 
     // inner class( classe ds une classe ) pr creer un viewHolder
     //alt entree pr generer le constructeur matching super
-    class ProfileHistoryViewHolder extends RecyclerView.ViewHolder {
+    //extends RecyclerView.ViewHolder
+     class ProfileHistoryViewHolder extends RecyclerView.ViewHolder {
 
         TextView poids;
         TextView taille;
         TextView age;
         TextView gender;
 
-        public ProfileHistoryViewHolder(@NonNull View itemView) {
+        //genere avc alt entree
+        ProfileHistoryViewHolder(@NonNull View itemView) {
             super(itemView);
             // on peut pâs app directement findViewById ds une viewHolder comme le cas d une activite
             poids = itemView.findViewById(R.id.item_poids);
