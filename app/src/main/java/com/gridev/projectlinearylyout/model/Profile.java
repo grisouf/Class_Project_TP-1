@@ -1,5 +1,10 @@
 package com.gridev.projectlinearylyout.model;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "tb_profile")
 public class Profile {
     // Generer le constructeur avc alt + insert
     public Profile(double poids, double taille, int age, byte gender) {
@@ -10,6 +15,17 @@ public class Profile {
     }
 
     // Proprietes
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    //@ColumnInfo(name = "first_name")
     private double poids;
     private double taille;
     private int age;

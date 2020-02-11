@@ -1,4 +1,4 @@
-package com.gridev.projectlinearylyout.adapter;
+package com.gridev.projectlinearylyout.view.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;

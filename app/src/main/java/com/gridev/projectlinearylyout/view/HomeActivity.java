@@ -1,4 +1,4 @@
-package com.gridev.projectlinearylyout;
+package com.gridev.projectlinearylyout.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+
+import com.gridev.projectlinearylyout.R;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 

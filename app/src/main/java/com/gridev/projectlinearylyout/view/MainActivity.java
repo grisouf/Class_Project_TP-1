@@ -1,4 +1,4 @@
-package com.gridev.projectlinearylyout;
+package com.gridev.projectlinearylyout.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.gridev.projectlinearylyout.R;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = "MainActivity";

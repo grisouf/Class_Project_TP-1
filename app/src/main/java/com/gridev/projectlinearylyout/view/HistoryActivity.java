@@ -1,18 +1,16 @@
-package com.gridev.projectlinearylyout;
+package com.gridev.projectlinearylyout.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.widget.TextView;
 
-import com.gridev.projectlinearylyout.adapter.ProfileHistoryAdapter;
+import com.gridev.projectlinearylyout.R;
+import com.gridev.projectlinearylyout.view.adapter.ProfileHistoryAdapter;
 import com.gridev.projectlinearylyout.model.Profile;
 
 import java.util.ArrayList;
-
-import static com.gridev.projectlinearylyout.HomeActivity.sentText;
 
 public class HistoryActivity extends AppCompatActivity {
 
