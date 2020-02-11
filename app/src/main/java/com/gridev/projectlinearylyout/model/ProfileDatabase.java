@@ -23,5 +23,5 @@ public abstract class ProfileDatabase extends RoomDatabase {
         return INSTANCE;
     }
 
-    public ProfileDao profileDao;
+    public abstract ProfileDao profileDao();
 }
