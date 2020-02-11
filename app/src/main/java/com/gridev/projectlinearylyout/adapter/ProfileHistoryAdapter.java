@@ -22,7 +22,7 @@ public class ProfileHistoryAdapter extends RecyclerView.Adapter<ProfileHistoryAd
 
     // Properties
     // Ajouter import java.util.List; pour travailler avc l interface List
-    private List<Profile> profileList = new ArrayList<>();
+    private List<Profile> profileList = new ArrayList<>();//son setter genere en bas
 
     @NonNull
     @Override
@@ -35,13 +35,30 @@ public class ProfileHistoryAdapter extends RecyclerView.Adapter<ProfileHistoryAd
 
     @Override
     public void onBindViewHolder(@NonNull ProfileHistoryViewHolder holder, int position) {
+        Profile profile = profileList.get(position);
 
+        holder.poids.setText(String.valueOf(profile.getPoids()));
+        holder.taille.setText(String.valueOf(profile.getTaille()));
+        holder.age.setText(String.valueOf(profile.getAge()));
+        if (profile.getGender() == 0) {
+            holder.gender.setText("Femme");
+        }
+        else
+        {
+            holder.gender.setText("Homme");
+        }
     }
 
     @Override
     public int getItemCount() {
      //profileList declare
-        return profileList.size();
+        return profileList.size();//pr savoir le nbre de fois a appeler la methode onBindViewHolder qui affiche les items
+    }
+
+
+    //alt insert pr generer cette methode choisir setter
+    public void setProfileList(List<Profile> profileList) {
+        this.profileList = profileList;
     }
 
     // inner class( classe ds une classe ) pr creer un viewHolder
