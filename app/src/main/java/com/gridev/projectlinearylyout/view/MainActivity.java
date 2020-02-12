@@ -1,6 +1,7 @@
 package com.gridev.projectlinearylyout.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -13,9 +14,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gridev.projectlinearylyout.R;
+import com.gridev.projectlinearylyout.model.Profile;
+import com.gridev.projectlinearylyout.viewmodel.ProfileViewModel;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = "MainActivity";
+    private ProfileViewModel model;
+    private Profile profile;
 
     // Views
     private EditText poids;
@@ -46,13 +51,18 @@ public class MainActivity extends AppCompatActivity {
 
        init();
 
+        model = new ViewModelProvider
+                .AndroidViewModelFactory(this.getApplication())
+                .create(ProfileViewModel.class);
+
        calcule.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
                getValues();
                double value = calculateMG();
                getResult(value);
-               
+               model.add(profile);
+
                 // Toast.makeText(MainActivity.this, "Message", Toast.LENGTH_SHORT).show();
                // Log.i(TAG, "onClick: message");
            }
@@ -92,6 +102,13 @@ public class MainActivity extends AppCompatActivity {
             max = 15;
             checkedValue = 1;
         }
+
+        profile = new Profile(
+                Double.valueOf(poids.getText().toString()),
+                Double.valueOf(taille.getText().toString()),
+                Integer.valueOf(age.getText().toString()),
+                (byte)  checkedValue
+        );
     }
 
     /**

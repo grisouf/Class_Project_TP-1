@@ -28,7 +28,7 @@ public class ProfileViewModel extends AndroidViewModel {
 
         dao = ProfileDatabase
                 .getDatabaseInstance(application)
-                .profileDao;
+                .profileDao();
 
         profileList = dao.selectAll();
     }
